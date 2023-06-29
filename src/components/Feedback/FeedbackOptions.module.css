@@ -1,0 +1,39 @@
+.btn {
+  background-color: rgb(213, 206, 197);
+  height: 35px;
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 15px;
+  transition: all 0.25s ease-in-out;
+}
+.container_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.title {
+  display: block;
+  color: #573601;
+  font-weight: 300px;
+  text-align: center;
+}
+ul {
+  list-style: none;
+}
+
+.btn:first-child:hover {
+  background-color: #56b167;
+  color: aliceblue;
+  border-color: aliceblue;
+}
+.btn:nth-child(2):hover {
+  background-color: #a49461;
+  color: aliceblue;
+  border-color: aliceblue;
+}
+.btn:last-child:hover {
+  background-color: #d45050;
+  color: aliceblue;
+  border-color: aliceblue;
+}
