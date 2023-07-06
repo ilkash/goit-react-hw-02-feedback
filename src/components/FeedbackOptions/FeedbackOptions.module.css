@@ -5,6 +5,7 @@
   border: 1px solid black;
   border-radius: 15px;
   transition: all 0.25s ease-in-out;
+  text-transform: capitalize;
 }
 .container_btn {
   display: flex;
@@ -21,19 +22,12 @@
 ul {
   list-style: none;
 }
-
-.btn:first-child:hover {
-  background-color: #56b167;
-  color: aliceblue;
-  border-color: aliceblue;
+.btn:hover {
+  background-color: #573601;
+  color: white;
 }
-.btn:nth-child(2):hover {
-  background-color: #a49461;
-  color: aliceblue;
-  border-color: aliceblue;
-}
-.btn:last-child:hover {
-  background-color: #d45050;
-  color: aliceblue;
-  border-color: aliceblue;
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
