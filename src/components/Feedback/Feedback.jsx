@@ -1,59 +1,53 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
 import Statistics from '../Statistics/Statistics';
 import styles from './Feedback.module.css';
 import Notification from '../Notification/Notification';
 
-class Feedback extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+const Feedback = () => {
+const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 });
 
-  onLeaveFeedback = option => {
-    this.setState(prevState => ({
-      [option]: prevState[option] + 1,
-    }));
-  };
+const onLeaveFeedback = (option) => {
+setFeedback((prevState) => ({
+...prevState,
+[option]: prevState[option] + 1,
+}));
+};
 
-  countTotalFeedback = () => {
-    const { good, neutral, bad } = this.state;
-    const total = good + neutral + bad;
-    return total;
-  };
+const countTotalFeedback = () => {
+const { good, neutral, bad } = feedback;
+const total = good + neutral + bad;
+return total;
+};
 
-  countPositiveFeedbackPercentage = () => {
-    const { good } = this.state;
-    const total = this.countTotalFeedback();
-    const positiveFeedback = Math.round((good / total) * 100) || 0;
-    return positiveFeedback;
-  };
-  render() {
-    const { good, neutral, bad } = this.state;
-    const total = this.countTotalFeedback();
-    const options  = Object.keys(this.state);
-    return (
-      <div>
-        <div className={styles.img}></div>
-        <FeedbackOptions
-          options={options}
-          onLeaveFeedback={this.onLeaveFeedback}
-        />
-        {total > 0 ? (
-          <Statistics
-            good={good}
-            bad={bad}
-            neutral={neutral}
-            total={this.countTotalFeedback()}
-            positive={this.countPositiveFeedbackPercentage()}
-          />
-        ) : (
-          <Notification message="There is no feedback" />
-        )}
-      </div>
-    );
-  }
-}
+const countPositiveFeedbackPercentage = () => {
+const { good } = feedback;
+const total = countTotalFeedback();
+const positiveFeedback = Math.round((good / total) * 100) || 0;
+return positiveFeedback;
+};
+
+const { good, neutral, bad } = feedback;
+const total = countTotalFeedback();
+const options = Object.keys(feedback);
+
+return (
+<div>
+<div className={styles.img}></div>
+<FeedbackOptions options={options} onLeaveFeedback={onLeaveFeedback} />
+{total > 0 ? (
+<Statistics
+       good={good}
+       bad={bad}
+       neutral={neutral}
+       total={countTotalFeedback()}
+       positive={countPositiveFeedbackPercentage()}
+     />
+) : (
+<Notification message="There is no feedback" />
+)}
+</div>
+);
+};
 
 export default Feedback;
